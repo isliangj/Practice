@@ -1,0 +1,176 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    height: 100%;
+}
+
+/*log_in*/
+.cmxform{
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    margin: 250px auto 125px;
+    text-align: center;
+}
+
+.acc input,.pas input{
+    outline: none;
+    width: 600px;
+    margin: 30px auto;
+    border: 0;
+    border-bottom: 1px solid #D3D3D3;
+    padding-left: 5px;
+    font-size: 40px;
+    font-weight: 100;
+    letter-spacing: 10px;
+}
+
+#user-name-error{
+    display: block;
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+}
+
+#account-submit{
+    border: none;
+    width: 600px;
+    height: 90px;
+    margin: 100px auto;
+    background-color: #00B5C1;
+    border-radius: 15px;
+    font-size: 50px;
+    font-weight: 200;
+    color: #FFFFFF;
+    letter-spacing: 10px;
+}
+
+/*clean*/
+header{
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: #FFFFFF;
+    position:fixed;
+    top:0;
+    left: 0;
+}
+
+header a{
+    line-height: 150px;
+    font-size: 48px;
+    color: #615D5C;
+    text-decoration: none;
+}
+
+header div{
+    height: 150px;
+    width: 100%;
+    margin: 0 50px;
+    text-align: center;
+    letter-spacing: 10px;
+}
+
+.action{
+    background-color: #00B5C1;
+}
+
+.content{
+    padding: 150px 0;
+    background-color: #DEDEDD;
+}
+
+.content_list{
+    width: 97%;
+    margin: 20px auto;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content_list_art{
+    padding: 20px 40px;
+}
+
+.content_list_art h1{
+    font-size: 40px;
+}
+
+.content_list_art p{
+    line-height: 70px;
+    font-size: 35px;
+}
+
+.content_list_art_mon{
+    color: #EB181D;
+}
+
+.content_list_art span{
+    text-decoration: line-through;
+    padding-left: 30px;
+    color: #72706F;
+}
+
+.content_list_pic{
+    margin: auto 30px;
+}
+
+footer{
+    display: flex;
+    height: 150px;
+    width: 100%;
+    text-align: center;
+    background-color: #00B5C1;
+    position:fixed;
+    left:0;
+    bottom:0;
+}
+
+footer a{
+    margin: auto;
+}
+
+#form{
+    display: none;
+}
+
+.form_back{
+    padding: 20px;
+}
+
+.form_content{
+    margin: 50px 0;
+}
+
+.form_content_lab,
+.form_content_tex{
+    width: 90%;
+    display: block;
+    margin: 10px auto;
+    font-size: 40px;
+}
+
+.form_content_tex{
+    border: 1px solid #786E68;
+    height: 80px;
+
+}
+
+.form_content_sub{
+    width: 90%;
+    background-color: #00B5C1;
+    display: block;
+    margin: 76px auto;
+    height: 82px;
+    font-size: 40px;
+    color: #FFFFFF;
+    letter-spacing: 20px;
+    border: none;
+}
+
