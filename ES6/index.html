@@ -7,15 +7,16 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>ES6</h1>
+  <h1 id="result">ES6</h1>
 </body>
 <script>
   /*
   暂时性死区
+  */
   if(true){
     //暂时性死区
-    tmp=123;
-    console.log(tmp);
+    // tmp=123;
+    // console.log(tmp);
 
     let tmp;   //死区结束
     console.log(tmp);
@@ -23,12 +24,12 @@
     tmp=123;
     console.log(tmp);
   }
-  */
+  
 
 
   /*
   块级作用域与函数声明
-  
+  */
   //ES5
   function f() { console.log('I am outside!'); }
 
@@ -40,28 +41,78 @@
   }());
   //ES6
   // 浏览器的 ES6 环境
-  function f() { console.log('I am outside!'); }
+  // function f() { console.log('I am outside!'); }
 
-  (function () {
-    if (false) {
-      // 重复声明一次函数f
-      function f() { console.log('I am inside!'); }
-    }
-
-    f();
-  }());
+  // (function () {
+  //   if (false) {
+  //     // 重复声明一次函数f
+  //     function f() { console.log('I am inside!'); }
+  //   }
+  //   f();
+  // }());
   // Uncaught TypeError: f is not a function
-  */
+
   
 
   /*
   const用法
-  
+  */
   const PI =3.14;
 
   PI;
 
-  PI=123;   //TypeError: Assignment to constant variable.
+  // PI=123;   //TypeError: Assignment to constant variable.
+  
+
+  /*
+    字符串的扩展
   */
+
+  console.log("\uD842\uDFB7");
+
+
+  var s = "𠮷a";
+  console.log(s.length);
+  console.log(s.codePointAt(0));
+  for(let ch of s){
+    console.log(ch.codePointAt(0).toString(16));
+  }
+
+  for(let codePoint of 'foo'){
+    console.log(codePoint);
+  }
+
+  var s2='Hello world!';
+  console.log(s2.startsWith('Hello'));
+
+  console.log('x'.repeat(3));
+  console.log('x'.padStart(5,'ab'));
+
+  console.log(`
+    <ul>
+      <li>first</li>
+      <li>second</li>
+    </ul>
+  `);
+  
+
+
+  /*
+  正则表达式
+  */
+  var regex = new RegExp(/xyz/,'i');
+  console.log(regex);
+
+  /*
+    数值的扩展
+  */
+  console.log(Number.isInteger(25));
+
+  function within(left,right){
+    return Math.abs(left -right) <Number.EPSILON;
+  }
+  console.log(within(0.1 + 0.2, 0.3));
+  console.log(within(0.2 + 0.2, 0.3));
+
 </script>
 </html>
