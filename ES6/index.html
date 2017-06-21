@@ -7,7 +7,7 @@
   <title>Document</title>
 </head>
 <body>
-  <h1 id="result">ES6</h1>
+  <h1 id="result">ES6入门练习</h1>
 </body>
 <script>
   /*
@@ -113,6 +113,113 @@
   }
   console.log(within(0.1 + 0.2, 0.3));
   console.log(within(0.2 + 0.2, 0.3));
+
+
+ /*
+  数组的扩展
+ */
+
+ console.log(Array.from([1,2,3],(x) => x * x));
+
+ console.log(Array.of(1,2,3,4));
+
+ // 将2号位到数组结束，复制到0号位
+ var i32a =new Int32Array([1,2,3,4,5]);
+ console.log(i32a.copyWithin(0,2));
+
+ console.log([1,4,-5,10].find((n) => n<0));
+
+ console.log(['a','b','c'].fill(1));
+
+ for(let index of ['a', 'b'].keys()){
+   console.log(index);
+ }
+// for (let elem of ['a', 'b'].values()) {
+//   console.log(elem);
+// }
+  for(let [index,elem] of ['a','b'].entries()){
+   console.log(index,elem);
+ }
+
+ console.log([1,2,3].includes(3,-1));
+
+
+ /*
+ 函数的扩展
+ */
+ function log(x, y='World'){
+   console.log(x,y);
+ }
+ log('Hello');
+ log('Hello','China');
+ log('Hello','');
+
+ let x=99;
+ function foo(p =x+1){
+   console.log(p);
+ }
+ foo();
+ x=100;
+ foo();
+
+ function m1({x =0, y=0}={}){
+   return [x,y];
+ }
+ function m2({x,y} = {x:0, y:0}){
+   return [x,y];
+ }
+ // 函数没有参数的情况
+console.log(m1());
+console.log(m2());
+// x和y都有值的情况
+console.log(m1({x: 3, y: 8})); // [3, 8]
+console.log(m2({x: 3, y: 8}) );// [3, 8]
+// x有值，y无值的情况
+console.log(m1({x: 3}) );// [3, 0];
+console.log(m2({x: 3})); // [3, undefined]
+// x和y都无值的情况
+console.log(m1({})); // [0, 0];
+console.log(m2({})); // [undefined, undefined]
+console.log(m1({z: 3})); // [0, 0]
+console.log(m2({z: 3})); // [undefined, undefined]
+
+var x2 = 1;
+function foo(x2 ,y =function() {x2 = 2; }){
+  var x2 =3;
+  y();
+  console.log(x2);
+}
+console.log(foo());
+console.log(x2);
+//利用参数默认值，可以指定某一个参数不得省略，如果省略就抛出一个错误。
+function throwIfMissing() {
+  throw new Error('Missing parameter');
+}
+function foo2(mustBeProvided =throwIfMissing()){
+  return mustBeProvided;
+}
+console.log(foo2(true));
+
+function push(array, ...items){
+  items.forEach(function(item){
+    array.push(item);
+    console.log(item);
+  });
+}
+var a3 = [];
+push(a3, 1, 2, 3);
+
+function add(x, y){
+  console.log(x + y);
+}
+var numbers =[4, 38];
+add(...numbers);
+
+const numbers2 = (...nums) => nums;
+console.log(numbers2(1,2,3,4,5));
+const headAndTail = (head, ...tail) => [head,tail];
+console.log(headAndTail(1,2,3,4,5));
+
 
 </script>
 </html>
