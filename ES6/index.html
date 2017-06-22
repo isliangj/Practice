@@ -220,6 +220,66 @@ console.log(numbers2(1,2,3,4,5));
 const headAndTail = (head, ...tail) => [head,tail];
 console.log(headAndTail(1,2,3,4,5));
 
+//箭头函数
+const full =({first, last}) => first + ' ' + last;
+//等同于
+function full2(person){
+  return person.first + ' ' + person.last;
+}
+//箭头函数应用于回调函数
+var a = [1,2,3].map(x => x*x);
+console.log(a);
+//this的用法
+function foo3(){
+  setTimeout(() => {
+    console.log('id:', this.id);
+  },100);
+}
+var id = 21;
+foo3.call({id:42});
+//尾递归（只在严格模式下开启，正常模式下无效）
+function factorial(n, total) {
+  if (n === 1) return total;
+  return factorial(n - 1, n * total);
+}
+factorial(5, 1);
 
+
+/*
+对象的扩展
+*/
+console.log(+0 === -0);
+console.log(NaN ===NaN);
+console.log(Object.is(+0, -0));
+console.log(Object.is(NaN, NaN));
+
+/*
+symbol
+*/
+var s1 = Symbol('foo');
+var s2 = Symbol('bar');
+console.log(s1);
+console.log(s2);
+//消除魔术字符串
+var shapeType = {
+  triangle: Symbol()
+}
+function getAtea(shape,options){
+  var area = 0;
+  switch (shape){
+    case shapeType.triangle:
+     area = .5 * options.width * options.height;
+     break;
+  }
+  return area;
+}
+getAtea(shapeType.triangle, {width: 100, height: 100});
+
+/*
+Set
+*/
+//Array.from方法可以将 Set 结构转为数组。
+const items = new Set([1, 2, 3, 4, 5]);
+const array =Array.from(items);
 </script>
 </html>
