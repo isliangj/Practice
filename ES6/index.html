@@ -309,15 +309,75 @@ console.log(map.get('title'));
 /*
 Proxy
 */
-var obj = new Proxy({}, {
-  get: function (target, key, receiver) {
-    console.log(`getting ${key}!`);
-    return Reflect.get(target, key, receiver);
-  },
-  set: function (target, key, value, receiver) {
-    console.log(`setting ${key}!`);
-    return Reflect.set(target, key, value, receiver);
+var porxy =new Proxy({},{
+  get:function(target, property) {
+    return 35;
   }
 });
+console.log(porxy.time);
+porxy.name;
+porxy.title;
+
+var person ={
+  name:"张三",
+  age:20
+};
+var proxy = new Proxy(person, {
+  get:function(target, property){
+    if (property in target){
+      return target[property];
+    } else {
+      throw new ReferenceError("Property \"" + property + "\" does not exist.");
+    }
+  }
+});
+console.log(proxy.name);
+console.log(proxy.age);
+
+let validator = {
+  set:function(obj, prop, value){
+    if (prop === 'age'){
+      if(!Number.isInteger(value)){
+         throw new TypeError('The age is not an integer');
+      }
+      if(value>200){
+         throw new RangeError('The age seems invalid');
+      }
+    }
+    // obj[peop] =value;//除age属性外，其他的直接保存
+  }
+};
+let person2 = new Proxy({}, validator);
+person2.age=100;
+console.log(person2.age);
+// console.log(person2.age = 'young');
+// console.log(person2.age = 300);
+
+var twice = {
+  apply(target, ctx, args){
+    return Reflect.apply(...arguments) * 2;
+  }
+};
+function sum(left, right){
+  return left + right;
+};
+var proxy = new Proxy(sum, twice);
+console.log(proxy(1, 2));
+console.log(proxy.call(null, 5, 6));
+console.log(proxy.apply(null,[7, 8]));
+
+/*
+Reflect
+*/
+//Proxy实现观察者模式
+// const person3 = observable({
+//   name: '张三',
+//   age: 20
+// });
+// function print() {
+//   console.log(`${person3.name}, ${person3.age}`)
+// }
+// observe(print);
+// person3.name = '李四';
 </script>
 </html>
