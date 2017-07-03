@@ -379,5 +379,38 @@ Reflect
 // }
 // observe(print);
 // person3.name = '李四';
+
+/*
+Promise
+*/
+const preloadImage =function(path){
+  return new Promise(function(resolve, reject){
+    var image = new Image();
+    image.onload =resolve;
+    image.onerror=reject;
+    image.sre = path;
+  });
+}
+
+/*
+for...of
+*/
+const arr = ['red', 'green', 'blue'];
+for(let v of arr){
+  console.log(v);
+}
+
+/*
+Generator
+*/
+function* f(){
+  console.log('执行了');
+} 
+var generator = f();
+setTimeout(function(){
+  generator.next()
+},200);
+
+
 </script>
 </html>
