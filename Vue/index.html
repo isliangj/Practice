@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    {{message}}
+  </div>
+  
+  <!--v-if-->
+  <div id="example">
+    <p v-if = "greeting">Hello</p>
+  </div>
+
+  <!--v-repeat-->
+  <!--<ul id="demo">
+    <li v-repeat = "items" class = "item-{{$index}}">
+      {{$index}} - {{parentMsg}} {{childMsg}}
+    </li>
+  </ul>-->
+
+<!--v-for-->
+  <ul id="demo">
+    <li v-for = "item in items" class = "item-{{$index}}">
+      {{$index}} - {{parentMsg}} {{item.msg}}
+    </li>
+  </ul>
+  <script>
+    var app = new Vue({
+    el:'#app',
+    data:{
+      message:'Hello Vue.js!'
+    }
+  });
+  
+  var exampleVM2 = new Vue({
+    el:'#example',
+    data:{
+      greeting:true
+    }
+  });
+
+  var demo = new Vue({
+    el: '#demo',
+    data:{
+      parentMsg: '滴滴',
+      items:[
+        { msg: '顺风车' },
+        { mag: '专车' }
+      ]
+    }
+  });
+  </script>
+</body>
+</html>
