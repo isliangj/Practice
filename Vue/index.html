@@ -5,64 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <script src="https://unpkg.com/vue"></script>
+
 </head>
 <body>
   <div id="app">
     {{message}}
-  </div>
   
   <!--v-if-->
-  <div id="example">
-    <p v-if = "greeting">Hello</p>
-  </div>
+  <p v-if = "greeting">Hello</p>
 
   <!--v-repeat-->
-  <!--<ul id="demo">
-    <li v-repeat = "items" class = "item-{{$index}}">
-      {{$index}} - {{parentMsg}} {{childMsg}}
+  <!--<ul>
+    <li v-repeat = "items">
+      {{parentMsg}}
     </li>
   </ul>-->
 
 <!--v-for-->
-  <!--<ul id="demo">
-    <li v-for = "item in items" class = "item-{{$index}}">
-      {{$index}} - {{parentMsg}} {{item.msg}}
+  <ul>
+    <li v-for = "(item,index) in items">
+      {{index}} - {{item.msg}} 
     </li>
-  </ul>-->
+  </ul>
 
 <!--Class与Style绑定-->
-  <div id="example2" class="static" v-bind:class=" 'orang':isRipe, 'green':isNotRipe "></div>
+    <div class="static" v-bind:class="{ 'orang':isRipe, 'green':isNotRipe }">
+      Class与Style绑定
+    </div>
+  </div>
 
+  <script src="./vue.js"></script>
   <script>
-    var app = new Vue({
+    var vm = new Vue({
     el:'#app',
     data:{
-      message:'Hello Vue.js!'
-    }
-  });
-
-  var exampleVM2 = new Vue({
-    el:'#example',
-    data:{
-      greeting:true
-    }
-  });
-
-  // var demo = new Vue({
-  //   el: '#demo',
-  //   data:{
-  //     parentMsg: '滴滴',
-  //     items:[
-  //       { msg: '顺风车' },
-  //       { mag: '专车' }
-  //     ]
-  //   }
-  // });
-
-  var vm = new Vue({
-    el: '#example2',
-    data:{
+      message:'Hello Vue.js!',
+      greeting:true,
+      parentMsg: '滴滴',
+      items:[
+        { msg: '顺风车' },
+        { msg: '专车' }
+      ],
       isRipe:true,
       isNotRipe:false,
     }
