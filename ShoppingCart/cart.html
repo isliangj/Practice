@@ -45,7 +45,7 @@
               <path class="path1" d="M29.333 16c0-7.364-5.97-13.333-13.333-13.333s-13.333 5.97-13.333 13.333c0 7.364 5.97 13.333 13.333 13.333s13.333-5.97 13.333-13.333v0 0 0 0 0 0zM0 16c0-8.837 7.163-16 16-16s16 7.163 16 16c0 8.837-7.163 16-16 16s-16-7.163-16-16zM14.667 14.667v1.333h2.667v-10.667h-2.667v9.333zM24 18.667h1.333v-2.667h-10.667v2.667h9.333z"></path>
             </symbol>
           </defs>
-        </svg>
+            </svg>
             <div class="container">
                 <div class="cart">
                     <div class="checkout-title">
@@ -65,47 +65,48 @@
                                 </ul>
                             </div>
                             <ul class="cart-item-list">
-                                <li>
+                                <li v-for="item in productList">
                                     <div class="cart-tab-1">
                                         <div class="cart-item-check">
-                                            <a href="javascript:void 0" class="item-check-btn">
+                                            <!--通过v-bind和v-on指令来控制单选  -->
+                                            <a href="javascript:;" class="item-check-btn" v-bind:class="{ 'check':item.checked}" @click="selectProduct(item)">
                                                 <svg class="icon icon-ok"><use xlink:href="#icon-ok"></use></svg>
                                             </a>
                                         </div>
                                         <div class="cart-item-pic">
-                                            <img src="img/goods-1.jpg" alt="烟">
+                                            <img src="./img/goods-1.jpg" lt="烟">
                                         </div>
                                         <div class="cart-item-title">
-                                            <div class="item-name">黄鹤楼香烟</div>
+                                            <div class="item-name">{{item.productName}}</div>
                                         </div>
                                         <div class="item-include">
                                             <dl>
                                                 <dt>赠送:</dt>
-                                                <dd>打火机</dd>
+                                                <dd v-for="part in item.parts">{{part.partsName}}</dd>
                                             </dl>
                                         </div>
                                     </div>
                                     <div class="cart-tab-2">
-                                        <div class="item-price"></div>
+                                        <div class="item-price">{{item.productPrice | formatMony}}</div>
                                     </div>
                                     <div class="cart-tab-3">
                                         <div class="item-quantity">
                                             <div class="select-self select-self-open">
                                                 <div class="quantity">
-                                                    <a href="javascript:void 0"></a>
-                                                    <input type="text" value="0" disabled>
-                                                    <a href="javascript:void 0"></a>
+                                                    <a href="javascript:;" @click="changeMoney(item, -1)">-</a>
+                                                    <input type="text" value="0" disabled v-model="item.productQuantity">
+                                                    <a href="javascript:;" @click="changeMoney(item, 1)">+</a>
                                                 </div>
                                             </div>
                                             <div class="item-stock">有货</div>
                                         </div>
                                     </div>
                                     <div class="cart-tab-4">
-                                        <div class="item-price-total">0.00</div>
+                                        <div class="item-price-total">{{item.productPrice * item.productQuantity | formatMony}}</div>
                                     </div>
                                     <div class="cart-tab-5">
                                         <div class="cart-item-operation">
-                                            <a href="javascript:void 0" class="item-edit-btn">
+                                            <a href="javascript:void 0" class="item-edit-btn" @click="delConfirm(item)">
                                                 <svg class="icon icon-del"><use xlink:href="#icon-del" ></use></svg>
                                             </a>
                                         </div>
@@ -119,47 +120,47 @@
                     <div class="cart-foot-wrap">
                         <div class="cart-foot-l">
                             <div class="item-all-check">
-                                <a href="javascript:void 0">
-                                    <span class="item-check-btn">
-                      <svg class="icon icon-ok"><use xlink:href="#icon-ok"></use></svg>
-                    </span>
+                                <a href="javascript:;">
+                                    <span class="item-check-btn" v-bind:class="{'check':checkAllFlag}" @click="checkedAll(true)">
+                                        <svg class="icon icon-ok"><use xlink:href="#icon-ok"></use></svg>
+                                    </span>
                                     <span>全选</span>
                                 </a>
                             </div>
                             <div class="item-all-del">
-                                <a href="javascript:void 0" class="item-del-btn">
+                                <a href="javascript:void 0" class="item-del-btn" @click="checkedAll(false)">
                                     <span>取消全选</span>
                                 </a>
                             </div>
                         </div>
                         <div class="cart-foot-r">
                             <div class="item-total">
-                                Item total: <span class="total-price"></span>
-                            </div>
+                                Item total: <span class="total-price">{{totalMoney}}</span> </div>
                             <div class="next-btn-wrap">
-                                <a href="javascrit:;" class="btn btn--red" style="width: 200px">结账</a>
+                                <a href="address.html" class="btn btn--red" style="width: 200px">结账</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="md-modal modal-msg md-modal-transition" id="showModal">
+            <div class="md-modal modal-msg md-modal-transition" id="showModal" v-bind:class="{'md-show':delFlag}">
                 <div class="md-modal-inner">
                     <div class="md-top">
-                        <button class="md-close">关闭</button>
+                        <button class="md-close" @click="delFlag=false">关闭</button>
                     </div>
                     <div class="md-content">
                         <div class="confirm-tips">
                             <p id="cusLanInfo">你确认删除此订单信息吗?</p>
                         </div>
                         <div class="btn-wrap col-2">
-                            <button class="btn btn--m" id="btnModalConfirm">Yes</button>
-                            <button class="btn btn--m btn--red" id="btnModalCancel">No</button>
+                            <button class="btn btn--m" id="btnModalConfirm" @click="delProduct()">Yes</button>
+                            <button class="btn btn--m btn--red" id="btnModalCancel" @click="delFlag=false">No</button>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="md-overlay" v-if="delFlag" @click="delFlag=false"></div>
         </div>
     </div>
 
