@@ -27,7 +27,7 @@
   
       <!-- 右侧主内容区 -->
       <div class="main-right">
-  
+          <router-view class="view"></router-view>
       </div>
     </main>
   </div>
