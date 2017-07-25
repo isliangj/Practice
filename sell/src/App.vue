@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- 头部 -->
-    <v-header></v-header>
+    <v-header :seller="seller"></v-header>
 
     <!-- 导航区 -->
     <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
@@ -27,7 +27,25 @@
   // 引用header组件
   import header from './components/header/header.vue'
 
+  const ERR_OK = 0
+
   export default {
+    data () {
+      return {
+        seller: {}
+      }
+    },
+
+    created () {
+      this.$http.get('/api/seller').then(response => {
+        response = response.body
+        if (response.errno === ERR_OK) {
+          this.seller = response.data
+          console.log(this.seller)
+        }
+      })
+    },
+
     components: {
       'v-header': header
     }

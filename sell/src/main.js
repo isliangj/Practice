@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 // 引用路由组件
 import goods from './components/goods/goods.vue'
 import ratings from './components/ratings/ratings.vue'
@@ -11,8 +12,9 @@ import seller from './components/seller/seller.vue'
 // 全局引用公用样式
 import './common/stylus/index.styl'
 
-// 注册路由
+// 注册
 Vue.use(VueRouter)
+Vue.use(VueResource)
 
 Vue.config.productionTip = false
 
