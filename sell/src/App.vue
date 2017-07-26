@@ -19,7 +19,8 @@
 
     <!-- 内容 -->
     <!-- 路由匹配到的组件将渲染在这里 -->
-    <router-view></router-view>
+    <!-- 通过router-view 将 seller 数据传递给子组件 -->
+    <router-view :seller="seller"></router-view>
   </div>
 </template>
 
@@ -41,7 +42,6 @@
         response = response.body
         if (response.errno === ERR_OK) {
           this.seller = response.data
-          console.log(this.seller)
         }
       })
     },

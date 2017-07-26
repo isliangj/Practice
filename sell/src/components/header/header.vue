@@ -1,19 +1,17 @@
 <template>
   <div class="header">
+    <!-- 顶部信息展示区 -->
     <div class="content-wrapper">
       <div class="avatar">
         <img width="64" height="64" :src="seller.avatar">
       </div>
       <div class="content">
         <div class="title">
-          <span class="brand">
-
-          </span>
+          <span class="brand"></span>
           <span class="name">
             {{seller.name}}
           </span>
         </div>
-
         <div class="description">
           {{seller.description}}/{{seller.deliveryTime}}分钟送达
         </div>
@@ -28,13 +26,16 @@
         <i class="icon-keyboard_arrow_right"></i>
       </div>
     </div>
+    <!-- 底部公告区 -->
     <div class="bulletin-wrapper" @click="showDetail">
       <span class="bulletin-title"></span><span class="bulletin-text">{{seller.bulletin}}</span>
       <i class="icon-keyboard_arrow_right"></i>
     </div>
+    <!-- 模糊背景层 -->
     <div class="background">
       <img :src="seller.avatar" width="100%" height="100%">
     </div>
+    <!-- 弹出层 -->
     <transition name="fade">
       <div v-show="detailShow" class="detail">
         <!-- 父层用来撑开屏幕 -->
