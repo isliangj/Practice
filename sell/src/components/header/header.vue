@@ -229,11 +229,15 @@
       overflow auto
       background rgba(7, 17, 27, 0.8)
       backdrop-filter blur(10px)
+      // 在元素整个过渡过程中作用
       &.fade-enter-active
         transition all 0.5s ease
         opacity 1
+      // v-leave-active在元素整个过渡过程中作用，在离开过渡被触发后立即生效
       &.fade-leave-active
         transition: all 0.5s ease
+      // v-enter: 定义进入过渡的开始状态。在元素被插入时生效，在下一个帧移除
+      // v-leave-to:定义离开过渡的结束状态。在离开过渡被触发一帧后生效（于此同时 v-leave 被删除）
       &.fade-enter, &.fade-leave-to
         opacity 0
       .detail-wrapper
