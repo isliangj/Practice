@@ -65,7 +65,7 @@
           bg-image('star48_half')
         &.off
           bg-image('star48_off')
-    &star-36
+    &.star-36
       .star-item
         width 15px
         height 15px
@@ -79,8 +79,8 @@
           bg-image('star36_half')
         &.off
           bg-image('star36_off')
-    &star-24
-      .stat-item
+    &.star-24
+      .star-item
         width 10px
         height 10px
         margin-right 3px
@@ -92,5 +92,5 @@
         &.half
           bg-image('star24_half')
         &.off
-          bg-image('star48_off')
+          bg-image('star24_off')
 </style>
