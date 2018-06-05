@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>sort-animation</title>
+  <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+  <div id="form" class="form">
+    <div class="from-wrap">
+      <div class="form-group">
+        <label for="arrLen">数组长度：</label>
+        <input name="arrLen" id="arrLen" class="form-control" value='50'>
+        <input value='生成数组' id="createArr" type="button">
+      </div>
+      <div class="form-group">
+        <label for="arr">数组：</label>
+        <textarea name="arr" id="textareaArr" class="num-input" rows="5">[66,78,90,22,64,18,86,32,19,60,28,24,23,17,67,82,57,89,33,11,76,43,79,5,42,99,14,95,68,51,4,77,91,83,27,21,84,72,8,30,71,52,20,94,80,29,81,26,39,53]</textarea>
+        <input value='确定' id="arrSure" type="button">
+      </div>
+      <div class="form-group">
+        <label for="speed">速度：</label>
+        <input id="speedUp" value="加快" class="" type="button">
+        <input id="speedDown" value="减慢" class="" type="button">
+      </div>
+      <div class="form-group sortBtn">
+        <label for="arr">排序方式：</label>
+        <input id="bubble" value="冒泡排序" class="sorting_btn" type="button">
+        <input id="insert" value="插入排序" class="" type="button">
+        <input id="select" value="选择排序" class="" type="button">
+        <input id="quick" value="快速排序" class="" type="button">
+        <input id="merge" value="归并排序" class="" type="button">
+      </div>
+    </div>
+  </div>
+  <div class="sort-animation">
+    <ul class="sort_ul">
+      <!-- <li class="sort_li">
+      <span class="sort_span" style="height: 40%"></span>
+    </li>
+    <li class="sort_li">
+      <span class="sort_span" style="height: 30%"></span>
+    </li>
+    <li class="sort_li">
+      <span class="sort_span" style="height: 70%"></span>
+    </li>
+    <li class="sort_li">
+      <span class="sort_span" style="height: 20%"></span>
+      <span class="sort_span_in " style="height: 10%"></span>
+    </li> -->
+    </ul>
+  </div>
+</body>
+
+<script src="js/selectSort.js"></script>
+<script src="js/insertSort.js"></script>
+<script src="js/mergeSort.js"></script>
+<script src="js/quickSort.js"></script>
+<script src="js/bubbleSort.js"></script>
+<script src="js/animation.js"></script>
+
+</html>

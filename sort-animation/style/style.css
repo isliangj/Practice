@@ -1,0 +1,91 @@
+.form,
+.sort-animation {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+
+  outline: none;
+
+  font-size: 18px;
+}
+.form-control {
+  width: 100px;
+  height: 30px;
+
+  font-size: 18px;
+}
+.form-group {
+  margin-bottom: 10px;
+}
+.num-input {
+  width: 600px;
+
+  resize: none;
+}
+input,
+textarea {
+  outline: none;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+input[type='button'] {
+  cursor: pointer;
+}
+.sort_ul {
+  width: 1000px;
+  height: 350px;
+
+  border: 1px solid #ccc;
+}
+.sort_li {
+  position: relative;
+
+  float: left;
+
+  width: 15px;
+  height: 100%;
+  margin-right: 3px;
+}
+.sort_span {
+  position: absolute;
+  bottom: 0;
+
+  display: block;
+
+  width: 100%;
+  /* height: 50%; */
+
+  background: #ddd;
+}
+.sort_span_blue {
+  background: blue;
+}
+.sort_span_green {
+  background: green;
+}
+.sort_span_tag {
+  background: red;
+}
+.sort_span_in {
+  position: absolute;
+  bottom: 0;
+  /* top: 0; */
+
+  display: block;
+
+  width: 100%;
+
+  background: red;
+}
+
+.sorting_btn {
+  color: #fff;
+  border: 1px solid green;
+  background-color: green;
+}
